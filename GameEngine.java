@@ -65,10 +65,19 @@ package F2;
  		Rectangle2D.Double er;
   		for(Enemy e : enemies){
   			er = e.getRectangle();
+        if(er.intersects(vr)){
+          die();
+          return;
+        }
    	}
   
  	
  	}
+
+  public void die(){
+    timer.stop();
+  }
+
   	void controlVehicle(KeyEvent e) {
   		switch (e.getKeyCode()) {
   		case KeyEvent.VK_LEFT:
@@ -80,21 +89,12 @@ package F2;
   		case KeyEvent.VK_D:
   			diff += 0.1;
   			break;
- 		switch (e.getKeyCode()) {
- 		case KeyEvent.VK_LEFT:
- 			v.move(-1);
- 			break;
- 		case KeyEvent.VK_RIGHT:
- 			v.move(1);
- 			break;
- 		case KeyEvent.VK_D:
- 			difficulty += 0.1;
- 			break;
- 
-   		}
+ 		 }
    	}
    
-  
+  public long getScore(){
+    return score;
+  }
   	
    	@Override
    	public void keyPressed(KeyEvent e) {
